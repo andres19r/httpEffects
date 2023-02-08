@@ -32,7 +32,7 @@ export class UserService {
 
   getUserById(id: string) {
     return this.http
-      .get<ReqresUserResponse>(`${this._url}/user/${id}`)
+      .get<ReqresUserResponse>(`${this._url}/users/${id}`)
       .pipe(map((resp) => resp.data));
   }
 }
