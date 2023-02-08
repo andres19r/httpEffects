@@ -21,14 +21,14 @@ export const usersReducer = createReducer(
   on(loadUsers, (state) => ({ ...state, loading: true })),
   on(loadUsersSuccess, (state, { users }) => ({
     ...state,
-    loaded: false,
+    loaded: true,
     loading: false,
     users: [...users],
   })),
   on(loadUsersError, (state, { payload }) => ({
     ...state,
     loading: false,
-    loaded: true,
+    loaded: false,
     error: payload,
   }))
 );

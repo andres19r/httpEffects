@@ -9,6 +9,6 @@ export const loadUsersSuccess = createAction(
 );
 
 export const loadUsersError = createAction(
-  '[Users] Load Users Success',
+  '[Users] Load Users Error',
   props<{ payload: any }>()
 );
