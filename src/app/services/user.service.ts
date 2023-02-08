@@ -11,6 +11,11 @@ export interface ReqresResponse {
   data: User[];
 }
 
+export interface ReqresUserResponse {
+  data: User;
+  support: any;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -22,6 +27,12 @@ export class UserService {
   getUsers() {
     return this.http
       .get<ReqresResponse>(`${this._url}/users?per_page=6&delay=3`)
+      .pipe(map((resp) => resp.data));
+  }
+
+  getUserById(id: string) {
+    return this.http
+      .get<ReqresUserResponse>(`${this._url}/user/${id}`)
       .pipe(map((resp) => resp.data));
   }
 }
