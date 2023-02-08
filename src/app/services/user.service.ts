@@ -15,13 +15,13 @@ export interface ReqresResponse {
   providedIn: 'root',
 })
 export class UserService {
-  private _url: string = 'https://reqres.in/api111';
+  private _url: string = 'https://reqres.in/api';
 
   constructor(private http: HttpClient) {}
 
   getUsers() {
     return this.http
-      .get<ReqresResponse>(`${this._url}/users?per_page=6`)
+      .get<ReqresResponse>(`${this._url}/users?per_page=6&delay=3`)
       .pipe(map((resp) => resp.data));
   }
 }

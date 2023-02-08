@@ -12,6 +12,8 @@ import { AppState } from 'src/app/store/app.reducers';
 })
 export class ListComponent implements OnInit, OnDestroy {
   users: User[] = [];
+  loading: boolean = false;
+  error: any;
   private _unsubscribe$ = new Subject<void>();
 
   constructor(private store: Store<AppState>) {}
@@ -20,7 +22,11 @@ export class ListComponent implements OnInit, OnDestroy {
     this.store
       .select('users')
       .pipe(takeUntil(this._unsubscribe$))
-      .subscribe(({ users }) => (this.users = users));
+      .subscribe(({ users, loading, error }) => {
+        this.loading = loading;
+        this.error = error;
+        this.users = users;
+      });
     this.store.dispatch(loadUsers());
   }
 
